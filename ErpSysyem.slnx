@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ErpSystem.API/ErpSystem.API.csproj" />
+    <Project Path="src/ErpSystem.Application/ErpSystem.Application.csproj" />
+    <Project Path="src/ErpSystem.Domain/ErpSystem.Domain.csproj" />
+    <Project Path="src/ErpSystem.Infrastructure/ErpSystem.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ErpSystem.API.IntegrationTests/ErpSystem.API.IntegrationTests.csproj" />
+    <Project Path="tests/ErpSystem.Application.Tests/ErpSystem.Application.Tests.csproj" />
+    <Project Path="tests/ErpSystem.Domain.Tests/ErpSystem.Domain.Tests.csproj" />
+  </Folder>
+</Solution>

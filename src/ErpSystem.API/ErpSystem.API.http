@@ -1,0 +1,13 @@
+@ErpSystem.API_HostAddress = http://localhost:5135
+
+#if (EnableOpenAPI)
+GET {{ErpSystem.API_HostAddress}}/openapi/v1.json
+Accept: application/json
+
+###
+#endif
+
+GET {{ErpSystem.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
