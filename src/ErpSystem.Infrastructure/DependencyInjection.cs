@@ -51,6 +51,8 @@ public static class DependencyInjection
         services.AddScoped<ICurrentUser, CurrentUserService>();
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         services.AddSingleton<JwtTokenGenerator>();
+        services.AddSingleton<ErpSystem.Application.Common.Interfaces.IJwtTokenGenerator, JwtTokenGenerator>();
+        services.AddScoped<ErpSystem.Application.Common.Interfaces.IUserRepository, UserRepository>();
 
         // IHttpContextAccessor necesario para CurrentUserService
         services.AddHttpContextAccessor();

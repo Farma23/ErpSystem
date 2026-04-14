@@ -13,7 +13,7 @@ namespace ErpSystem.Infrastructure.Identity;
 /// Los tokens incluyen claims del usuario (id, email, roles) y tienen
 /// un tiempo de expiración configurable.
 /// </summary>
-public class JwtTokenGenerator
+public class JwtTokenGenerator : ErpSystem.Application.Common.Interfaces.IJwtTokenGenerator
 {
     /// <summary>
     /// Configuración de la aplicación inyectada para leer los valores de JWT
