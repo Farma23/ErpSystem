@@ -1,4 +1,3 @@
-using ErpSystem.Application.Common.Exceptions;
 using ErpSystem.Application.Orders.Queries.GetOrderById;
 using ErpSystem.Domain.Entities;
 using ErpSystem.Domain.Interfaces;
@@ -21,7 +20,7 @@ public class GetAllOrdersHandler : IRequestHandler<GetAllOrdersQuery, List<Order
             order.OrderNumber,
             order.CustomerId,
             order.Status,
-            order.Total.Amount,
+            order.Items.Sum(i => i.SubTotal.Amount),
             order.Total.Currency,
             order.CreatedAt,
             order.Items.Select(i => new OrderItemDto(

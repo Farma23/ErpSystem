@@ -15,22 +15,20 @@ public class Order : BaseEntity
     private readonly List<OrderItem> _items = [];
     public IReadOnlyCollection<OrderItem> Items => _items.AsReadOnly();
 
-    private Order() { } // EF Core
+    private Order() { }
 
     public static Order Create(Guid customerId, string currency = "USD")
     {
         if (customerId == Guid.Empty)
             throw new DomainException("CustomerId is required.");
 
-        var order = new Order
+        return new Order
         {
             CustomerId = customerId,
             Status = OrderStatus.Draft,
             OrderNumber = GenerateOrderNumber(),
             Total = Money.Zero(currency)
         };
-
-        return order;
     }
 
     public void AddItem(string productName, int quantity, Money unitPrice)
@@ -43,7 +41,6 @@ public class Order : BaseEntity
 
         var item = new OrderItem(Id, productName, quantity, unitPrice);
         _items.Add(item);
-        RecalculateTotal();
         SetUpdatedAt();
     }
 
@@ -67,11 +64,6 @@ public class Order : BaseEntity
         Status = OrderStatus.Cancelled;
         SetUpdatedAt();
     }
-
-    private void RecalculateTotal()
-        => Total = _items.Aggregate(
-            Money.Zero(Total.Currency),
-            (acc, item) => acc.Add(item.SubTotal));
 
     private static string GenerateOrderNumber()
         => $"ORD-{DateTime.UtcNow:yyyyMMdd}-{Guid.NewGuid().ToString()[..8].ToUpper()}";

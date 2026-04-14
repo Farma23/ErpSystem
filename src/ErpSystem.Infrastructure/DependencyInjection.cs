@@ -42,6 +42,7 @@ public static class DependencyInjection
 
         // Repositorios: Scoped para compartir el mismo DbContext por request
         services.AddScoped<IRepository<Order>, OrderRepository>();
+        services.AddScoped<IRepository<OrderItem>, OrderItemRepository>();
 
         // Unit of Work: Scoped para coordinar todos los repositorios del request
         services.AddScoped<IUnitOfWork, UnitOfWork>();

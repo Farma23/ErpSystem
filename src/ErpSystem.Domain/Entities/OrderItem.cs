@@ -14,7 +14,7 @@ public class OrderItem : BaseEntity
 
     private OrderItem() { } // EF Core
 
-    internal OrderItem(Guid orderId, string productName, int quantity, Money unitPrice)
+    public OrderItem(Guid orderId, string productName, int quantity, Money unitPrice)
     {
         if (string.IsNullOrWhiteSpace(productName))
             throw new DomainException("ProductName is required.");
